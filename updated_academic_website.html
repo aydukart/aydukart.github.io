@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexander Dukart - Academic Personal Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .header-text h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .header-text p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: #2c3e50;
+            color: white;
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        .indent-1 { 
+            margin-left: 40px; 
+        }
+        .research-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .research-tag {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #bdc3c7;
+        }
+
+        .publication {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-left: 3px solid #3498db;
+            background: #f8f9fa;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .publication h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-authors {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+
+        .publication-venue {
+            font-weight: 500;
+            color: #e74c3c;
+        }
+
+        .services-section {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-left: 4px solid #2ecc71;
+            background: #f0f8f0;
+            border-radius: 0 8px 8px 0;
+            margin-top: 2rem;
+        }
+
+        .services-section h4 {
+            color: #27ae60;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .services-section .publication-authors {
+            color: #2c3e50;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .services-section .publication-venue {
+            color: #2c3e50;
+            font-weight: normal;
+            line-height: 1.8;
+        }
+
+        .course {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #2ecc71;
+        }
+
+        .course h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        /* New styles for CV section */
+        .cv-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .cv-download:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .cv-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* New styles for Education section */
+        .education-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #9b59b6;
+        }
+
+        .education-item h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .degree {
+            color: #8e44ad;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .institution {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-details {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* New styles for Contact section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .contact-details h4 {
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-details p {
+            color: #666;
+            margin: 0;
+        }
+
+        .contact-details a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: #34495e;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .header-text h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="https://www.stat.pitt.edu/sites/default/files/person-images/Dukart%2C%20A%202.jpg" class="profile-photo">
+                <div class="header-text">
+                    <h1>Alexander Dukart</h1>
+                    <h2>PhD student</h2>
+                    <p>Statistics | University of Pittsburgh</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#consulting">Consulting</a></li>
+                <li><a href="#teaching">Teaching</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="about">
+            <h3>About Me</h3>
+            <p>I am a fourth-year Ph.D. student in Statistics with research interests in machine learning. My work focuses on explainable artificial intelligence and developing methods to better understand black-box models. I am particularly interested in bridging the gap between predictive performance and interpretability to ensure machine learning models can be both accurate and transparent.</p>
+            <br>
+            <p>I work under the supervision of Professor Lucas Mentch</p>
+            <br>
+            <p>Currently I spend a lot of time thinking about...</p>
+            <br>
+                <ul>
+                <p><li class="indent-1">Model interpretability and transparency</li><p/>
+                    <br>
+                <p><li class="indent-1">Why do Random Forests work so well?</li><p>
+                    <br>
+                <p><li class="indent-1">Large Language Models and their short and long term impact on our society</li><p>
+                    <br>
+                <ul>
+        </section>
+
+        <section id="education">
+            <h3>Education</h3>
+            
+            <div class="education-item">
+                <h4>Ph.D. in Statistics</h4>
+                <div class="degree">Doctor of Philosophy (Expected 2026)</div>
+                <div class="institution">University of Pittsburgh, Pittsburgh, PA</div>
+                <div class="education-details">
+                    <p><strong>Advisor:</strong> Professor Lucas Mentch</p>
+                    <p><strong>Research Focus:</strong> Explainable Machine Learning, Random Forests, Model Interpretability</p>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <h4>Master's Degree</h4>
+                <div class="degree">[Degree Title and Year]</div>
+                <div class="institution">[University Name, Location]</div>
+                <div class="education-details">
+                    <p>[Add relevant details about your master's degree, thesis topic, or other accomplishments]</p>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <h4>Bachelor's Degree</h4>
+                <div class="degree">[Degree Title and Year]</div>
+                <div class="institution">[University Name, Location]</div>
+                <div class="education-details">
+                    <p>[Add relevant details about your undergraduate degree, honors, or relevant coursework]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="research">
+            <h3>Research</h3>
+            <p>My research focuses on explainable machine learning but I have additional projects in many different domains. Current projects include:</p>
+            <br>
+            <div class="publication">
+                <h4>Random Forests</h4>
+                <p>My research investigates why random forests perform well across different signal-to-noise ratio (SNR) regimes. By studying the mechanisms that drive their success, I aim to uncover how random forests adapt to varying data environments and what this reveals about the role of regularization in machine learning.</p>
+            </div>
+
+            <div class="publication">
+                <h4>Statistics Department Rankings</h4>
+                <p>This project develops advanced statistical methods for ranking academic statistics departments. A key component of the work is creating new theoretical frameworks for understanding the statistics of tiers, which allow for more principled and robust comparisons across institutions.</p>
+            </div>
+
+            <div class="publication">
+                <h4>Semantic similarity within ensemble tree methods</h4>
+                <p>This project explores methods for grouping decision trees within ensemble tree models, based on semantic similarity. By identifying and analyzing clusters of trees that capture related predictive structures, the work aims to provide new insights into how ensembles represent information, improve interpretability, and potentially enhance model efficiency.</p>
+            </div>
+        </section>
+
+        <section id="consulting">
+            <h3>Consulting</h3>
+            <p>I have extensive experience in consulting and have worked on over 10 projects across a variety of differnent fields including:</p>
+            <br>
+            <ul>
+                <p><li class="indent-1">Natural Language Processing</li><p/>
+                <p><li class="indent-1">Computer Vision</li><p>
+                <p><li class="indent-1">Psychiatry</li><p>
+                <p><li class="indent-1">Nursing Research</li><p>
+                <p><li class="indent-1">Neuroscience</li><p>
+                <p><li class="indent-1">Education Research</li><p>
+                <p><li class="indent-1">Biology</li><p>
+            <br>
+            Here are a few consulting projects I have worked on in greater detail (I cannot share specific papers or author names for confidentiality reasons): 
+            <br><br>
+            </ul>
+            <div class="publication">
+                <h4>Evaluating large language models capacity to reason</h4>
+                <div class="publication-venue">Assisted in evaluating large language models' capacity for reasoning by testing several common LLMs on a structured prediction task. Contributed by verifying the statistical methodology and ensuring the correctness of mathematical computations underlying the project's analysis.</div>
+            </div>
+
+            <div class="publication">
+                <h4>Doctor bias against children with type 2 Diabetes</h4>
+                <div class="publication-venue">Contributed to a research project investigating physician bias toward children with type 2 diabetes, with responsibilities including data cleaning and supporting the statistical analysis.</div>
+            </div>
+
+            <div class="publication">
+                <h4>Covid19 Vaccine Resistance</h4>
+                <div class="publication-venue">Worked on a project evaluating a survey designed to measure resistance to COVID-19 vaccination, with responsibilities including assessing question design, data cleaning, and supporting the statistical analysis.</div>
+            </div>
+
+            <div class="services-section">
+                <h4>Professional Services Offered</h4>
+                <div class="publication-venue">
+                    • Research design and methodology consulting<br>
+                    • Data analysis and statistical modeling<br>
+                    • Data cleaning<br>
+                </div>
+            </div>
+
+            <p><strong>For consulting inquiries, please <a href="aydukart@gmail.com" style="color: #3498db;">contact me directly</a> to discuss your project needs and availability.</strong></p>
+        </section>
+
+        <section id="teaching">
+            <h3>Teaching</h3>
+            <p>I have over three years of experience teaching at both an undergraduate and graduate level.</p>
+            <br>
+            <div class="course">
+                <h4>Data Modeling Using R (EE 5373)</h4>
+                <p>Instructor: Intro course in data sceience for graduate students in the electrical engineering department, I have fully integrated LLM usage into this course and have expanded the content to include many different machine learning concepts as well.</p>
+            </div>
+
+            <div class="course">
+                <h4>Statistical Learning and Data Science (STAT 1361/2360)</h4>
+                <p>TA: Advanced course on Data science and machine learning for senior undergraduates and graduate students.</p>
+            </div>
+
+            <div class="course">
+                <h4>Applied Statistical Methods (STAT 1000)</h4>
+                <p>Instructor/TA: Intro course in statistics for undergraduates.</p>
+            </div>
+        </section>
+
+        <section id="cv">
+            <h3>Curriculum Vitae</h3>
+            <p>Download my complete CV for detailed information about my academic background, research experience, publications, and professional accomplishments.</p>
+            <br>
+            <a href="#" class="cv-download" onclick="alert('Please upload your CV file and update this link')">
+                <svg class="cv-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"/>
+                </svg>
+                Download CV (PDF)
+            </a>
+            <p><em>Last updated: [Date]</em></p>
+        </section>
+
+        <section id="contact">
+            <h3>Contact</h3>
+            <p>I welcome opportunities for collaboration, consulting projects, and academic discussions. Feel free to reach out through any of the following channels:</p>
+            <br>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">@</div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p><a href="mailto:aydukart@gmail.com">aydukart@gmail.com</a></p>
+                        <p><a href="mailto:ayd17@pitt.edu">ayd17@pitt.edu</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-details">
+                        <h4>LinkedIn</h4>
+                        <p><a href="https://www.linkedin.com/in/alexander-dukart-59ba69240/" target="_blank">Connect with me</a></p>
+                        <p>Professional networking</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Alexander Dukart. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/alexander-dukart-59ba69240/">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to navigation links based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
